@@ -60,17 +60,23 @@ function render(variables = {}) {
 
   // Determine social media position class
   let position =
-    socialMediaPosition === "left" ? "position-left" : "position-right";
+    variables.socialMediaPosition === "left"
+      ? "position-left"
+      : "position-right";
 
   // Update HTML content
   document.querySelector("#widget_content").innerHTML = `
     <div class="widget">
       ${cover}
       <img src="${avatarURL}" class="photo" />
-      <h1>${name} ${lastName}</h1>
-      <h2>${role}</h2>
-      <h3>${city}, ${country}</h3>
-      <ul class="${position}">
+      <h1>${name == null ? "Lucy" : name} ${
+    lastName == null ? "Boilett" : lastName
+  }</h1>
+      <h2>${role == null ? "Web Developer" : role}</h2>
+      <h3>${city == null ? "Miami" : city}, ${
+    country == null ? "USA" : country
+  }</h3>
+      <ul class="${variables.socialMediaPosition}">
         <li><a href="https://twitter.com/${twitter}" target="_blank"><i class="fab fa-twitter"></i></a></li>
         <li><a href="https://github.com/${github}" target="_blank"><i class="fab fa-github"></i></a></li>
         <li><a href="https://linkedin.com/in/${linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
